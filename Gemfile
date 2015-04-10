@@ -19,8 +19,11 @@ group :production do
   gem 'rails_12factor'
 end
 
-group :development do
+group :development, :test do
   gem 'sqlite3'
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-nav'
 end
 
 gem 'jquery-rails'
