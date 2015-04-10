@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
-  get 'welcome/about'
-  root 'welcome#index'
+  get "songs/upload", :as => "upload"
+  get "songs/delete", :as => "delete"
+
+  #get 'songs/index'
+  root 'songs#index'
 end

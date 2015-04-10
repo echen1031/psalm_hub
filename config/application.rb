@@ -20,9 +20,6 @@ module PsalmHub
       :secret_access_key => ENV["AWS_SECRET_ACCESS_KEY"]
     )
 
-    # todo: where is this BUCKET used?
-    BUCKET = ENV["AWS_BUCKET_NAME"]
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
