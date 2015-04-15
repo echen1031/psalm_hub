@@ -3,6 +3,10 @@ class SongsController < ApplicationController
     @songs = AWS::S3::Bucket.find(ENV["AWS_BUCKET_NAME"]).objects
   end
 
+  def show
+    @song = Song.find(params[:id])
+  end
+
   def upload
     begin
       AWS::S3::S3Object.store(sanitize_filename(params[:mp3file].original_filename), params[:mp3file].read, ENV["AWS_BUCKET_NAME"], :access => :public_read)
