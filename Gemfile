@@ -26,6 +26,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-remote'
   gem 'pry-nav'
+  gem 'faker'
 end
 
 group :test do
