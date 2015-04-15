@@ -1,5 +1,5 @@
 <h2>Listen to a MP3 with HTML5 Audio</h2>
-<section id="audio"> 
+<section id="audio">
 </section>
 
 <h2>Upload a new MP3:</h2>
@@ -8,14 +8,18 @@
     <%= submit_tag "Upload" %>
   <% end %>
 
-<h2>Download and Delete Existing MP3's</h2>
+<h2>Songs</h2>
 <table>
   <% @songs.each do |song| %>
     <tr>
-      <td><%= song.key %></td>
-      <td><%= link_to "HTML5 Audio", download_url_for(song.key), :class => "html5" %></td>
-      <td><%= link_to "Download", download_url_for(song.key) %></td>
-      <td><%= link_to "Delete",  "songs/delete/?song=" + song.key, :confirm => 'Are you sure you want to delete ' + song.key + '?' %></td>
+      <td><%= link_to song.title, song_path(song) %></td>
+      <td><%#= song.key %></td>
+      <td>
+        <%= link_to "HTML5 Audio", download_url_for(song.link),
+          :class => "html5" %>
+      </td>
+      <td><%#= link_to "Download", download_url_for(song.link) %></td>
+      <td><%#= link_to "Delete",  "songs/delete/?song=" + song.key, :confirm => 'Are you sure you want to delete ' + song.key + '?' %></td>
     </tr>
   <% end %>
 </table>

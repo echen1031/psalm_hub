@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :song do
-    title "I Am the Living Bread"
-    lyrics "Who came down out of heaven"
+    title { Faker::Lorem.sentence(4) }
+    lyrics { Faker::Lorem.paragraph(1) }
   end
 end
