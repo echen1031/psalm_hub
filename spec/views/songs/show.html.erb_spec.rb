@@ -6,5 +6,6 @@ describe "songs/show.html.erb" do
     render
     expect(rendered).to have_content(song.title)
     expect(rendered).to have_content(song.lyrics)
+    expect(rendered).to have_content(song.chords)
   end
 end

@@ -6,5 +6,9 @@
     <source src="<%= @song.link %>" />
   </audio>
 </p>
+</br>
 
-<p><%= @song.lyrics %></p>
+<% for i in 0..@song.number_of_lines %>
+  <p><%= @song.display_chords[i] %></p>
+  <p><%= @song.display_lyrics[i] %></p>
+<% end %>
