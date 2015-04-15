@@ -19,8 +19,11 @@ group :production do
   gem 'rails_12factor'
 end
 
-group :development do
+group :development, :test do
   gem 'sqlite3'
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-nav'
 end
 
 gem 'jquery-rails'
@@ -29,6 +32,5 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'spring',        group: :development
-gem 'aws-s3'
-
-
+gem 'aws-s3', :require => 'aws/s3'
+gem 'figaro'
