@@ -17,3 +17,12 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore Mac backup files
+.DS_Store
+
+# Ignore ctags file
+tags
+
+# Ignore ruby version file
+.ruby-version

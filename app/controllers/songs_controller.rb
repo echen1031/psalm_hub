@@ -1,6 +1,11 @@
 class SongsController < ApplicationController
   def index
-    @songs = AWS::S3::Bucket.find(ENV["AWS_BUCKET_NAME"]).objects
+    #@songs = AWS::S3::Bucket.find(ENV["AWS_BUCKET_NAME"]).objects
+    @songs = Song.all
+  end
+
+  def show
+    @song = Song.find(params[:id])
   end
 
   def upload

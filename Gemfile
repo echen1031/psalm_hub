@@ -21,9 +21,16 @@ end
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
   gem 'pry'
   gem 'pry-remote'
   gem 'pry-nav'
+  gem 'faker'
+end
+
+group :test do
+  gem 'capybara'
 end
 
 gem 'jquery-rails'
