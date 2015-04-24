@@ -26,6 +26,10 @@ class SongsController < ApplicationController
     end
   end
 
+  def new
+    @song = Song.new
+  end
+
   private
 
   def sanitize_filename(file_name)
