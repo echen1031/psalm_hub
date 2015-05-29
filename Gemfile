@@ -41,3 +41,5 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'aws-s3', :require => 'aws/s3'
 gem 'figaro'
+gem 'nokogiri'
+gem 'sidekiq'

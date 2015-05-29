@@ -1,0 +1,35 @@
+<h1>Listing bible_verses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Testament</th>
+      <th>Book</th>
+      <th>Chapter</th>
+      <th>Verse</th>
+      <th>Content</th>
+      <th>Reference</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bible_verses.each do |bible_verse| %>
+      <tr>
+        <td><%= bible_verse.testament %></td>
+        <td><%= bible_verse.book %></td>
+        <td><%= bible_verse.chapter %></td>
+        <td><%= bible_verse.verse %></td>
+        <td><%= bible_verse.content %></td>
+        <td><%= bible_verse.reference %></td>
+        <td><%= link_to 'Show', bible_verse %></td>
+        <td><%= link_to 'Edit', edit_bible_verse_path(bible_verse) %></td>
+        <td><%= link_to 'Destroy', bible_verse, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bible verse', new_bible_verse_path %>

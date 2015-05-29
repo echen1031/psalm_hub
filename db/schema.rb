@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415154818) do
+ActiveRecord::Schema.define(version: 20150529040924) do
+
+  create_table "bible_verses", force: true do |t|
+    t.string   "testament"
+    t.string   "book"
+    t.integer  "chapter"
+    t.integer  "verse"
+    t.string   "content"
+    t.string   "reference"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "songs", force: true do |t|
     t.string   "title"
