@@ -11,7 +11,7 @@ feature "New song page" do
       click_button 'Submit'
     }.to change(Song, :count).by(1)
 
-    expect(current_path).to eq song_path
+    expect(current_path).to eq song_path Song.first
   end
 end
 
