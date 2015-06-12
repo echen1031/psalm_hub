@@ -30,6 +30,17 @@ class SongsController < ApplicationController
     @song = Song.new
   end
 
+  def create
+    @song = Song.new(song_params)
+    if @song.save
+      flash[:notice] = "Song created successfully."
+      redirect_to song_path
+    else
+      flash[:error] = "Song could not be saved. Please try again."
+      render action: :new
+    end
+  end
+
   private
 
   def sanitize_filename(file_name)
