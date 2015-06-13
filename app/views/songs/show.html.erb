@@ -1,11 +1,14 @@
 
 <h3><%= @song.title %></h3>
 
+<%= link_to "edit", edit_song_path(@song) %>
+
 <p>
   <audio controls="controls">
     <source src="<%= @song.link %>" />
   </audio>
 </p>
+
 </br>
 
 <% for i in 0..@song.number_of_lines %>

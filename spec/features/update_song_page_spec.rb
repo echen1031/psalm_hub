@@ -4,7 +4,8 @@ feature "Update song page" do
 
   scenario "update basic song attributes" do
     new_song_attr = create(:song)
-    visit edit_song_path create(:song)
+    visit song_path create(:song)
+    click_link 'edit'
 
     fill_in 'song[title]', with: new_song_attr.title
     fill_in 'song[lyrics]', with: new_song_attr.lyrics
