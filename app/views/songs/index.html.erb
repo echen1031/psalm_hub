@@ -4,13 +4,6 @@
   <% @songs.each do |song| %>
     <tr>
       <td><%= link_to song.title, song_path(song) %></td>
-      <td><%#= song.key %></td>
-      <td>
-        <%#= link_to "HTML5 Audio", download_url_for(song.link),
-          :class => "html5" %>
-      </td>
-      <td><%#= link_to "Download", download_url_for(song.link) %></td>
-      <td><%#= link_to "Delete",  "songs/delete/?song=" + song.key, :confirm => 'Are you sure you want to delete ' + song.key + '?' %></td>
     </tr>
   <% end %>
 </table>
