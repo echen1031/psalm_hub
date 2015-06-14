@@ -1,13 +1,25 @@
 class Song < ActiveRecord::Base
   def number_of_lines
-    lyrics.split('|').count
+    if lyrics.present?
+      lyrics.split('|').count
+    else
+      0
+    end
   end
 
   def display_chords
-    self.chords.split('|')
+    if chords.present?
+      chords.split('|')
+    else
+      ""
+    end
   end
 
   def display_lyrics
-    self.lyrics.split('|')
+    if lyrics.present?
+      self.lyrics.split('|')
+    else
+      ""
+    end
   end
 end

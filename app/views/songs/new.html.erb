@@ -1,0 +1,8 @@
+
+Create a New Song
+
+<%= simple_form_for @song do |f| %>
+  <%= f.input :title %>
+  <%= f.input :lyrics, as: :text %>
+  <%= f.submit "Submit", class: "btn btn-info" %>
+<% end %>
