@@ -5,8 +5,9 @@ ruby '2.1.2'
 gem 'rails', '4.1.2'
 
 #bootstrap
-gem 'bootstrap-sass', '~> 3.1.1.1.0'
+gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'simple_form', '~> 3.1.0.rc1'
+gem 'sprockets'
 
 group :assets do
   gem 'sass-rails', '~> 4.0.3'
