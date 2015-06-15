@@ -1,0 +1,13 @@
+Update "<%= @song.title %>"
+
+<%= simple_form_for @song do |f| %>
+  <%= f.input :title %>
+  <%= f.input :lyrics, as: :text %>
+  <%= f.submit "Submit", class: "btn btn-info" %>
+<% end %>
+
+Upload a new MP3:
+<%= form_tag upload_path, :method => "post", :multipart => true do %>
+  <%= file_field_tag "mp3file" %>
+  <%= submit_tag "Upload" %>
+<% end %>

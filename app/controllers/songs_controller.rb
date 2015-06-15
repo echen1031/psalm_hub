@@ -8,6 +8,21 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
   end
 
+  def edit
+    @song = Song.find(params[:id])
+  end
+
+  def update
+    @song = Song.find(params[:id])
+    if @song.update_attributes(song_params)
+      flash[:notice] = "Song updated successfully."
+      redirect_to song_path @song
+    else
+      flash[:error] = "Song could not be updated. Please try again."
+      render action: :new
+    end
+  end
+
   def upload
     begin
       AWS::S3::S3Object.store(sanitize_filename(params[:mp3file].original_filename), params[:mp3file].read, ENV["AWS_BUCKET_NAME"], :access => :public_read)
@@ -26,11 +41,30 @@ class SongsController < ApplicationController
     end
   end
 
+  def new
+    @song = Song.new
+  end
+
+  def create
+    @song = Song.new(song_params)
+    if @song.save
+      flash[:notice] = "Song created successfully."
+      redirect_to song_path @song
+    else
+      flash[:error] = "Song could not be saved. Please try again."
+      render action: :new
+    end
+  end
+
   private
 
   def sanitize_filename(file_name)
     just_filename = File.basename(file_name)
     just_filename.sub(/[^\w\.\-]/,'_')
+  end
+
+  def song_params
+    params.require(:song).permit(:title, :lyrics)
   end
 end
 
