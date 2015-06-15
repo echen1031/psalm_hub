@@ -1,21 +1,23 @@
 
-<h3><%= @song.title %></h3>
+<div class="container">
+  <h3><%= @song.title %></h3>
 
-<%= link_to "edit", edit_song_path(@song) %>
+  <%= link_to "edit", edit_song_path(@song) %>
 
-<p>
+  <p>
   <audio controls="controls">
     <source src="<%= @song.link %>" />
   </audio>
-</p>
-<p>
-<%#= link_to "Downlaod", download_url_for(song.link), :class => "html5" %>
-<%#= link_to "Delete",  "songs/delete/?song=" + song.key, :confirm => 'Are you sure you want to delete ' + song.key + '?' %>
-</p>
+  </p>
+  <p>
+  <%#= link_to "Downlaod", download_url_for(song.link), :class => "html5" %>
+  <%#= link_to "Delete",  "songs/delete/?song=" + song.key, :confirm => 'Are you sure you want to delete ' + song.key + '?' %>
+  </p>
 
-</br>
+  </br>
 
-<% for i in 0..@song.number_of_lines %>
-  <p><%= @song.display_chords[i] %></p>
-  <p><%= @song.display_lyrics[i] %></p>
-<% end %>
+  <% for i in 0..@song.number_of_lines %>
+    <p><%= @song.display_chords[i] %></p>
+    <p><%= @song.display_lyrics[i] %></p>
+  <% end %>
+</div>
