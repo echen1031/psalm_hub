@@ -1,35 +1,32 @@
-<h1>Listing bible_verses</h1>
+<h1>Bible Verses Lookup</h1>
+<div class="row">
+  <div class="col-md-12">
+  <%= search_form_for @q do |f| %>
+    <div class="span3">
+      <%= f.select :testament_in, BibleVerse::TESTAMENTS, include_blank: "Both" %>
+      <%= f.select :book_in, BibleVerse::EN_BOOKS, include_blank: "All" %>
+      <%= f.text_field :chapter_eq, :placeholder => 'Ch' %>
+      <%= f.text_field :verse_eq, :placeholder => 'Verse', :class => 'span1' %>
+      <%= f.text_field :content_cont, :placeholder => 'Words', :class => 'span2' %>
+      <%= f.submit "Search", :class => "btn btn-primary" %>
+    </div>
+  <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Testament</th>
-      <th>Book</th>
-      <th>Chapter</th>
-      <th>Verse</th>
-      <th>Content</th>
-      <th>Reference</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @bible_verses.each do |bible_verse| %>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
       <tr>
-        <td><%= bible_verse.testament %></td>
-        <td><%= bible_verse.book %></td>
-        <td><%= bible_verse.chapter %></td>
-        <td><%= bible_verse.verse %></td>
-        <td><%= bible_verse.content %></td>
-        <td><%= bible_verse.reference %></td>
-        <td><%= link_to 'Show', bible_verse %></td>
-        <td><%= link_to 'Edit', edit_bible_verse_path(bible_verse) %></td>
-        <td><%= link_to 'Destroy', bible_verse, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Ref</th>
+        <th>Verse</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Bible verse', new_bible_verse_path %>
+      <% @bible_verses.each do |bible_verse| %>
+        <tr>
+          <td class="span2">
+            <%= link_to bible_verse.reference, bible_verse_path(bible_verse) %>
+          </td>
+          <td><%= bible_verse.content %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
