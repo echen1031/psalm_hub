@@ -14,21 +14,12 @@ class SongsController < ApplicationController
 
   def update
     @song = Song.find(params[:id])
-    if @song.update_attributes(song_params)
+    if upload_song and @song.update_attributes(song_params)
       flash[:notice] = "Song updated successfully."
       redirect_to song_path @song
     else
       flash[:error] = "Song could not be updated. Please try again."
       render action: :new
-    end
-  end
-
-  def upload
-    begin
-      AWS::S3::S3Object.store(sanitize_filename(params[:mp3file].original_filename), params[:mp3file].read, ENV["AWS_BUCKET_NAME"], :access => :public_read)
-      redirect_to root_path
-    rescue
-      render :text => "Couldn't complete the upload"
     end
   end
 
@@ -46,14 +37,36 @@ class SongsController < ApplicationController
   end
 
   def create
-    @song = Song.new(song_params)
-    if @song.save
-      flash[:notice] = "Song created successfully."
-      redirect_to song_path @song
+    if upload_song
+      @song = Song.new(song_params)
+      if @song.save
+        flash[:notice] = "Song created successfully."
+        redirect_to song_path @song
+      else
+        flash[:error] = "Song could not be saved. Please try again."
+        render action: :new
+      end
     else
-      flash[:error] = "Song could not be saved. Please try again."
+      flash[:error] = "Song could not be uploaded."
       render action: :new
     end
+  end
+
+  def upload_song
+    successful = false
+    begin
+      aws_object = AWS::S3::S3Object.store(
+        sanitize_filename(params[:song][:mp3file].original_filename),
+        params[:song][:mp3file].read,
+        ENV["AWS_BUCKET_NAME"],
+        :access => :public_read
+      )
+      binding.pry
+      successful = true
+    rescue
+      successful = false
+    end
+    successful
   end
 
   private

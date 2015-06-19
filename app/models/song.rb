@@ -1,7 +1,7 @@
 class Song < ActiveRecord::Base
   def number_of_lines
     if lyrics.present?
-      lyrics.split('|').count
+      split_lyrics.count
     else
       0
     end
@@ -9,7 +9,7 @@ class Song < ActiveRecord::Base
 
   def display_chords
     if chords.present?
-      chords.split('|')
+      chords
     else
       ""
     end
@@ -17,9 +17,13 @@ class Song < ActiveRecord::Base
 
   def display_lyrics
     if lyrics.present?
-      self.lyrics.split('|')
+      split_lyrics
     else
       ""
     end
+  end
+
+  def split_lyrics
+    self.lyrics.split(/\r?\n/)
   end
 end

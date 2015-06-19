@@ -3,6 +3,17 @@ Update "<%= @song.title %>"
 <%= simple_form_for @song do |f| %>
   <%= f.input :title %>
   <%= f.input :lyrics, as: :text %>
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label" for="song_link">
+      Upload Song
+    </label>
+    <div class="col-sm-9">
+      <%= f.file_field :mp3file, label: "Upload Song",
+        class: "btn btn-default" %>
+    </div>
+  </div>
+
   <%= f.submit "Submit", class: "btn btn-info" %>
 <% end %>
 
