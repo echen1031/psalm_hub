@@ -1,7 +1,32 @@
-Create a New Song
 
-<%= simple_form_for @song do |f| %>
-  <%= f.input :title %>
-  <%= f.input :lyrics, as: :text %>
-  <%= f.submit "Submit", class: "btn btn-info" %>
-<% end %>
+<div class="col-sm-9 col-md-10">
+  <div class="page-header">
+    <h3>Add a Song</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <%= simple_form_for @song, html: {class: "form-horizontal" },
+        wrapper: :horizontal_form,
+        wrapper_mappings: {} do |f| %>
+
+        <%= f.input :title %>
+        <%= f.input :lyrics, input_html: {rows: 10} %>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="song_link">
+            Upload Song
+          </label>
+          <div class="col-sm-9">
+            <%= f.file_field :mp3file, label: "Upload Song",
+              class: "btn btn-default" %>
+          </div>
+        </div>
+
+        <br/>
+        <%= f.submit "Submit", class: "btn btn-info" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

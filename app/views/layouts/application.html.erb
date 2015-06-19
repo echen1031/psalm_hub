@@ -12,7 +12,7 @@
     <div class="container">
       <ul class="nav nav-tabs">
         <li><%= link_to "Songs", songs_path %></li>
-        <li><%= link_to "Create New Song", new_song_path %></li>
+        <li><%= link_to "Add a Song", new_song_path %></li>
         <li><%= link_to "Verses", bible_verses_path %></li>
       </ul>
 
@@ -41,7 +41,10 @@
         </div>
       <% end %>
 
-      <%= yield %>
+      <div class="container">
+        <%= yield %>
+      </div>
     </div>
+
   </body>
 </html>

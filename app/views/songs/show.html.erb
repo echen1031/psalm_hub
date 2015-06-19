@@ -1,12 +1,15 @@
-
-<h3><%= @song.title %></h3>
-
-<%= link_to "edit", edit_song_path(@song) %>
+<div>
+<h3>
+  <%= @song.title %>
+  ~ <%= link_to "edit", edit_song_path(@song) %>
+    </h3>
+    </br>
+</div>
 
 <p>
-  <audio controls="controls">
-    <source src="<%= @song.link %>" />
-  </audio>
+<audio controls="controls">
+  <source src="<%= @song.link %>" />
+</audio>
 </p>
 <p>
 <%#= link_to "Downlaod", download_url_for(song.link), :class => "html5" %>
