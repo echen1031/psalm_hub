@@ -1,6 +1,5 @@
 class SongsController < ApplicationController
   def index
-    #@songs = AWS::S3::Bucket.find(ENV["AWS_BUCKET_NAME"]).objects
     @songs = Song.all
   end
 
@@ -57,7 +56,8 @@ class SongsController < ApplicationController
 
   def format_link(mp3file)
     formatedFileName = mp3file.original_filename.sub(" ","_")
-    "http://s3.amazonaws.com/psalmhubeast/#{formatedFileName}"
+    #todo: dehardcode amazonaws url?
+    "http://s3.amazonaws.com/#{ENV['AWS_BUCKET_NAME']}/#{formatedFileName}"
   end
 
   def upload_song
