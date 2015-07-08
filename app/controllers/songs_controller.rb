@@ -1,6 +1,5 @@
 class SongsController < ApplicationController
   def index
-    #@songs = AWS::S3::Bucket.find(ENV["AWS_BUCKET_NAME"]).objects
     @songs = Song.all
   end
 
@@ -37,13 +36,16 @@ class SongsController < ApplicationController
   end
 
   def create
-    if upload_song
+    aws_object = upload_song
+    params[:song][:link] = format_link(params[:song][:mp3file])
+
+    if aws_object
       @song = Song.new(song_params)
       if @song.save
         flash[:notice] = "Song created successfully."
         redirect_to song_path @song
       else
-        flash[:error] = "Song could not be saved. Please try again."
+        flash[:error] = "Song could not be saved."
         render action: :new
       end
     else
@@ -52,21 +54,23 @@ class SongsController < ApplicationController
     end
   end
 
+  def format_link(mp3file)
+    formatedFileName = mp3file.original_filename.sub(" ","_")
+    #todo: dehardcode amazonaws url?
+    "http://s3.amazonaws.com/#{ENV['AWS_BUCKET_NAME']}/#{formatedFileName}"
+  end
+
   def upload_song
-    successful = false
     begin
-      aws_object = AWS::S3::S3Object.store(
+      AWS::S3::S3Object.store(
         sanitize_filename(params[:song][:mp3file].original_filename),
         params[:song][:mp3file].read,
         ENV["AWS_BUCKET_NAME"],
         :access => :public_read
       )
-      binding.pry
-      successful = true
     rescue
-      successful = false
+      nil
     end
-    successful
   end
 
   private
@@ -77,7 +81,7 @@ class SongsController < ApplicationController
   end
 
   def song_params
-    params.require(:song).permit(:title, :lyrics)
+    params.require(:song).permit(:title, :lyrics, :link)
   end
 end
 
