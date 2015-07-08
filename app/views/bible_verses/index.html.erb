@@ -1,33 +1,4 @@
 <h1>Bible Verses</h1>
 <div class="row">
-  <div class="col-md-12">
-  <%= search_form_for @q do |f| %>
-    <div class="span3">
-      <%= f.select :testament_in, BibleVerse::TESTAMENTS, include_blank: "Both" %>
-      <%= f.select :book_in, BibleVerse::EN_BOOKS, include_blank: "All" %>
-      <%= f.text_field :chapter_eq, :placeholder => 'Ch' %>
-      <%= f.text_field :verse_eq, :placeholder => 'Verse', :class => 'span1' %>
-      <%= f.text_field :content_cont, :placeholder => 'Words', :class => 'span2' %>
-      <%= f.submit "Search", :class => "btn btn-primary" %>
-    </div>
-  <% end %>
-
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped table-hover">
-      <tr>
-        <th>Ref</th>
-        <th>Verse</th>
-      </tr>
-      <%= will_paginate @bible_verses, renderer: BootstrapPagination::Rails %>
-
-      <% BibleVerseDecorator.decorate_each(@bible_verses) do |bible_verse| %>
-        <tr>
-          <td class="span2">
-            <%= link_to bible_verse.reference, bible_verse_path(bible_verse) %>
-          </td>
-          <td><%= bible_verse.content %></td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
+  <%= render 'shared/verse_lookup' %>
 </div>
