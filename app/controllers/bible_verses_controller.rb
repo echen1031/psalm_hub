@@ -2,8 +2,8 @@ class BibleVersesController < ApplicationController
 
   def index
     @q = BibleVerse.ransack(params[:q])
-    @bible_verses = @q.result.limit(176)
-    @bible_verses = BibleVerseDecorator.decorate_collection(@bible_verses)
+    @bible_verses = @q.result
+    @bible_verses = @bible_verses.paginate(page: params[:page], :per_page => 5)
 
     respond_to do |format|
       format.html

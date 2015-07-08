@@ -18,8 +18,9 @@
         <th>Ref</th>
         <th>Verse</th>
       </tr>
+      <%= will_paginate @bible_verses, renderer: BootstrapPagination::Rails %>
 
-      <% @bible_verses.each do |bible_verse| %>
+      <% BibleVerseDecorator.decorate_each(@bible_verses) do |bible_verse| %>
         <tr>
           <td class="span2">
             <%= link_to bible_verse.reference, bible_verse_path(bible_verse) %>
