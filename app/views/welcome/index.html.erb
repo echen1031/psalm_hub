@@ -1,0 +1,14 @@
+<head>
+  <title>Psalm Hub</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="js/mediaelement-and-player.min.js"></script>
+  <link rel="stylesheet" href="css/style.css" media="screen">
+</head>
+<div class="jumbotron">
+  <div class="text-center">
+    <div class="container-fluid">
+      <h1>Psalm Hub</h1>
+      <p><%= render partial: "shared/audio_player", locals: {song: @random_song} %></p>
+    </div>
+  </div>
+</div>
