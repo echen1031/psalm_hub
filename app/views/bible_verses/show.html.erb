@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <b>Tesatment:</b>
+  <%= @bible_verse.testament %>
+</p>
+
+<p>
+  <b>Reference:</b>
+  <%= @bible_verse.reference %>
+</p>
+
+<p>
+  <b>Book:</b>
+  <%= @bible_verse.book %>
+</p>
+
+<p>
+  <b>Chapter:</b>
+  <%= @bible_verse.chapter %>
+</p>
+
+<p>
+  <b>Verse:</b>
+  <%= @bible_verse.verse %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @bible_verse.content %>
+</p>
+
+<%= link_to 'Back', bible_verses_path, :class => 'btn' %>

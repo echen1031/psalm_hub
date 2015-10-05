@@ -33,6 +33,13 @@ class SongsController < ApplicationController
 
   def new
     @song = Song.new
+    @q = BibleVerse.ransack(params[:q])
+    @bible_verses = @q.result
+    @bible_verses = @bible_verses.paginate(page: params[:page], :per_page => 1)
+
+    respond_to do |format|
+      format.html
+    end
   end
 
   def create

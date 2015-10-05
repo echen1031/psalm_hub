@@ -19,6 +19,8 @@
 </br>
 
 <% for i in 0..@song.number_of_lines %>
-  <%#= @song.display_chords[i] %>
-  <p><%= @song.display_lyrics[i] %></p>
+  <% if @song.chords %>
+    <p><%= @song.decorate.display_chords[i] %></p>
+  <% end %>
+  <p><%= @song.decorate.display_lyrics[i] %></p>
 <% end %>

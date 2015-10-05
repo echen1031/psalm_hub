@@ -5,8 +5,9 @@ ruby '2.1.2'
 gem 'rails', '4.1.2'
 
 #bootstrap
-gem 'bootstrap-sass', '~> 3.1.1.1.0'
+gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'simple_form', '~> 3.1.0.rc1'
+gem 'sprockets'
 gem 'paperclip', "~> 4.2" # for upload file in form
 
 group :assets do
@@ -43,3 +44,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'aws-s3', :require => 'aws/s3'
 gem 'figaro'
+gem 'nokogiri'
+gem 'sidekiq'
+gem 'draper'
+gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
