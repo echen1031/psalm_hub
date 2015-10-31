@@ -1,26 +1,21 @@
-<div>
-<h3>
-  <%= @song.title %>
-  ~ <%= link_to "edit", edit_song_path(@song) %>
-    </h3>
+<head>
+  <title>Audio Player</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="js/mediaelement-and-player.min.js"></script>
+  <link rel="stylesheet" href="css/style.css" media="screen">
+</head>
+<body>
+  <div>
     </br>
-</div>
+    <%= render partial: "shared/audio_player", locals: {song: @song} %>
 
-<p>
-<audio controls="controls">
-  <source src="<%= @song.link %>" />
-</audio>
-</p>
-<p>
-<%#= link_to "Downlaod", download_url_for(song.link), :class => "html5" %>
-<%#= link_to "Delete",  "songs/delete/?song=" + song.key, :confirm => 'Are you sure you want to delete ' + song.key + '?' %>
-</p>
+    </br>
 
-</br>
-
-<% for i in 0..@song.number_of_lines %>
-  <% if @song.chords %>
-    <p><%= @song.decorate.display_chords[i] %></p>
-  <% end %>
-  <p><%= @song.decorate.display_lyrics[i] %></p>
-<% end %>
+    <% for i in 0..@song.number_of_lines %>
+      <% if @song.chords %>
+      <p><%= @song.decorate.display_chords[i] %></p>
+    <% end %>
+      <p><%= @song.decorate.display_lyrics[i] %></p>
+    <% end %>
+  </div>
+</body>

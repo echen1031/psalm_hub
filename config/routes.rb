@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   resources :songs, only: [:show, :index, :new, :create, :edit, :update]
   resources :bible_verses, only: [:show, :index]
 
-  root 'songs#index'
+  root 'welcome#index'
 end
