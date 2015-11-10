@@ -1,5 +1,6 @@
 class Song < ActiveRecord::Base
   has_many :likes
+  belongs_to :user
 
   def number_of_lines
     if lyrics.present?
