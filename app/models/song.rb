@@ -1,4 +1,6 @@
 class Song < ActiveRecord::Base
+  has_many :likes
+
   def number_of_lines
     if lyrics.present?
       split_lyrics.count
