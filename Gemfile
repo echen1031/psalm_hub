@@ -34,6 +34,7 @@ end
 group :test do
   gem 'capybara'
   gem 'launchy'
+  gem 'shoulda-matchers', '~> 3.0'
 end
 
 gem 'jquery-rails'
