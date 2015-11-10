@@ -14,13 +14,15 @@
         <li><%= link_to "Songs", songs_path %></li>
         <li><%= link_to "Add a Song", new_song_path %></li>
         <li><%= link_to "Verses", bible_verses_path %></li>
-      </ul>
 
-      <div class="pull-right user-info">
-        <ul class="nav nav-tabs">
-          <!-- user login stuff -->
-        </ul>
-      </div>
+        <div class="pull-right user-info">
+          <% if current_user %>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+          <% end %>
+        </div>
+      </ul>
     </div>
 
     <div class="container">
