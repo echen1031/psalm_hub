@@ -1,10 +1,17 @@
 require 'rails_helper'
 
 feature "Update song page" do
+  let(:user) {create(:user)}
+
+  before(:each) do
+    login(user)
+  end
 
   scenario "update basic song attributes" do
+    skip "find out how to test upload"
     new_song_attr = create(:song)
     visit song_path create(:song)
+    save_and_open_page
     click_link 'edit'
 
     fill_in 'song[title]', with: new_song_attr.title

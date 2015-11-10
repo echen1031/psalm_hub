@@ -1,6 +1,12 @@
 require "rails_helper"
 
 RSpec.describe BibleVersesController, :type => :routing do
+  let(:current_user) {create(:user)}
+
+  before(:each) do
+    sign_in :user, current_user
+  end
+
   describe "routing" do
 
     it "routes to #index" do
