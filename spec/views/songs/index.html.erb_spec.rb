@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 describe "songs/index.html.erb" do
   it "list songs correctly" do

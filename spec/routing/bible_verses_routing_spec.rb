@@ -1,4 +1,4 @@
-require "rails_helper"
+require "spec_helper"
 
 RSpec.describe BibleVersesController, :type => :routing do
   let(:current_user) {create(:user)}

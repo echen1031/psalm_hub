@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 describe "songs/show.html.erb" do
   it "display song details correctly" do

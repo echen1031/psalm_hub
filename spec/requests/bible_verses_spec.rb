@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe "BibleVerses", :type => :request do
   describe "GET /bible_verses" do

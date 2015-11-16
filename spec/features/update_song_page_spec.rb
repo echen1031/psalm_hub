@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 feature "Update song page" do
   let(:user) {create(:user)}
