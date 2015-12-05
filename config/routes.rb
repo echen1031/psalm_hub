@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "songs/delete", :as => "delete"
 
   resources :songs, only: [:show, :index, :new, :create, :edit, :update]
-  resources :bible_verses, only: [:show, :index]
+  resources :bible_verses
 
   root 'welcome#index'
 end
