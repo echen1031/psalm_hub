@@ -5,7 +5,9 @@
     </audio>
   </h2>
 </div>
-<%= render partial: 'likes/like', locals: { song: song } %>
+<% if current_user %>
+  <%= render partial: 'likes/like', locals: { song: song } %>
+<% end %>
 
 <%#= link_to "Downlaod", download_url_for(song.link), :class => "html5" %>
 <%#= link_to "Delete",  "songs/delete/?song=" + song.key, :confirm => 'Are you sure you want to delete ' + song.key + '?' %>
