@@ -36,6 +36,7 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'shoulda-matchers', '~> 3.0'
+  gem 'database_cleaner'
 end
 
 gem 'jquery-rails'

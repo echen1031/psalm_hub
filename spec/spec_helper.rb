@@ -37,6 +37,24 @@ RSpec.configure do |config|
 
   config.include Devise::TestHelpers, type: :controller
   config.include FeatureHelpers, type: :feature
+
+  config.use_transactional_fixtures = false
+
+  config.before :suite do
+    DatabaseCleaner.clean
+  end
+
+  config.before :each do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 end
 
 
