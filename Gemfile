@@ -6,6 +6,7 @@ gem 'rails', '4.1.2'
 
 #bootstrap
 gem 'bootstrap-sass', '~> 3.2.0.2'
+gem 'bootstrap-sass-rails', '~> 2.2.2.0'
 gem 'simple_form', '~> 3.1.0.rc1'
 gem 'sprockets'
 gem 'paperclip', "~> 4.2" # for upload file in form
@@ -34,6 +35,8 @@ end
 group :test do
   gem 'capybara'
   gem 'launchy'
+  gem 'shoulda-matchers', '~> 3.0'
+  gem 'database_cleaner'
 end
 
 gem 'jquery-rails'
@@ -50,3 +53,4 @@ gem 'draper'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+gem 'devise'

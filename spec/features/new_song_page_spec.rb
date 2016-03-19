@@ -1,6 +1,13 @@
-require 'rails_helper'
+require 'spec_helper'
+
 
 feature "New song page" do
+  let(:user) {create(:user)}
+
+  before(:each) do
+    login(user)
+  end
+
   scenario "create new song" do
     song = build(:song)
     visit new_song_path

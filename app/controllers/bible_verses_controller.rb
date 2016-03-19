@@ -1,4 +1,5 @@
 class BibleVersesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @q = BibleVerse.ransack(params[:q])

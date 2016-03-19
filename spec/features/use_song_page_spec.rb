@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 feature "Use song page" do
   scenario "finds audio playback song" do

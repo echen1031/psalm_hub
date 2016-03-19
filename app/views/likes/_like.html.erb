@@ -1,0 +1,11 @@
+<div>
+  <% if like = current_user.liked(song) %>
+    <%= link_to song_like_path(song), class: 'btn btn-danger', method: :delete do %>
+      <span class="glyphicon glyphicon-star-empty"> </span>&nbsp; Unlike
+    <% end %>
+  <% else %>
+    <%= link_to song_likes_path(song), class: 'btn btn-primary', method: :post do %>
+      <span class="glyphicon glyphicon-star"> </span>&nbsp; Like
+    <% end %>
+  <% end %>
+</div>
