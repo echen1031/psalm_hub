@@ -48,22 +48,22 @@ class SongsController < ApplicationController
     aws_object = upload_song
     params[:song][:link] = format_link(params[:song][:mp3file])
 
-    if aws_object
-      @song = Song.new(song_params)
-      if @song.save
-        flash[:notice] = "Song created successfully."
-        redirect_to song_path @song
-      else
-        flash[:error] = "Song could not be saved."
-        render action: :new
-      end
+    if aws_object.nil?
+      (flash[:error] ||= []).push("Song could not be uploaded.")
+    end
+
+    @song = Song.new(song_params)
+    if @song.save
+      flash[:notice] = "Song created successfully."
+      redirect_to song_path @song
     else
-      flash[:error] = "Song could not be uploaded."
+      (flash[:error] ||= []).push("Song could not be saved.")
       render action: :new
     end
   end
 
   def format_link(mp3file)
+    return "" if mp3file.nil?
     formatedFileName = mp3file.original_filename.sub(" ","_")
     #todo: dehardcode amazonaws url?
     "http://s3.amazonaws.com/#{ENV['AWS_BUCKET_NAME']}/#{formatedFileName}"
