@@ -6,7 +6,7 @@
   <div class="text-center">
     <div class="container-fluid">
       <h1>Psalm Hub</h1>
-      <p><%= render partial: "shared/audio_player", locals: {song: @random_song} %></p>
+      <p><%= render partial: "shared/audio_player", locals: {song: @random_song} unless @random_song.nil? %></p>
     </div>
   </div>
 </div>
