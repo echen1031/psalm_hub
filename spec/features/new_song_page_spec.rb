@@ -8,17 +8,22 @@ feature "New song page" do
     login(user)
   end
 
-  scenario "create new song" do
-    song = build(:song)
-    visit new_song_path
+  context "create new song" do
+    scenario "succesfully" do
+      song = build(:song)
+      visit new_song_path
 
-    expect{
-      fill_in 'song[title]', with: song.title
-      fill_in 'song[lyrics]', with: song.lyrics
-      click_button 'Submit'
-    }.to change(Song, :count).by(1)
+      expect{
+        fill_in 'song[title]', with: song.title
+        fill_in 'song[lyrics]', with: song.lyrics
+        click_button 'Submit'
+      }.to change(Song, :count).by(1)
 
-    expect(current_path).to eq song_path Song.first
+      expect(current_path).to eq song_path Song.first
+    end
+
+    scenario "cannot be saved"
+    scenario "cannot be uploaded"
   end
 
   scenario "create new song with mp3 upload" do

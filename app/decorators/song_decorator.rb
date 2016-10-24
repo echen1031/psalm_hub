@@ -10,6 +10,6 @@ class SongDecorator < Draper::Decorator
   end
 
   def display_lyrics
-    self.lyrics.split('|')
+    self.lyrics.split("\n")
   end
 end
