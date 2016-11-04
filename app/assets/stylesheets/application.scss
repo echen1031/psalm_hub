@@ -100,4 +100,7 @@ div.audio-player {
 
 .lyrics {
   font-family: courier new;
+  p {
+    white-space: pre;
+  }
 }
