@@ -16,11 +16,6 @@ Bundler.require(*Rails.groups)
 
 module PsalmHub
   class Application < Rails::Application
-    AWS::S3::Base.establish_connection!(
-      :access_key_id     => ENV["AWS_ACCESS_KEY_ID"],
-      :secret_access_key => ENV["AWS_SECRET_ACCESS_KEY"]
-    )
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
