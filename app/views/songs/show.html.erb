@@ -2,20 +2,24 @@
   <title>Audio Player</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 </head>
+
 <body>
-  <div>
-    </br>
-    <%= render partial: "shared/audio_player", locals: {song: @song} %>
+  <h3>
+    <%= @song.title %>
+  </h3>
 
-    </br>
+  <%= render "shared/audio_player", song: @song %>
 
-    <div class="lyrics">
-      <% for i in 0..@song.number_of_lines %>
-        <% if @song.chords %>
-        <p><%= @song.decorate.display_chords[i] %></p>
-      <% end %>
-        <p><%= @song.decorate.display_lyrics[i] %></p>
-      <% end %>
-    </div>
+  <% if current_user %>
+    <%= render partial: 'likes/like', locals: { song: song } %>
+  <% end %>
+
+  <div class="lyrics">
+    <% for i in 0..@song.number_of_lines %>
+      <% if @song.chords %>
+      <p><%= @song.decorate.display_chords[i] %></p>
+    <% end %>
+      <p><%= @song.decorate.display_lyrics[i] %></p>
+    <% end %>
   </div>
 </body>

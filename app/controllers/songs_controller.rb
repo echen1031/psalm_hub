@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :show
 
   def index
     @songs = Song.all

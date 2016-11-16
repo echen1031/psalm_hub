@@ -29,4 +29,8 @@ class Song < ActiveRecord::Base
   def split_lyrics
     self.lyrics.split(/\r?\n/)
   end
+
+  def has_audio?
+    link.present?
+  end
 end

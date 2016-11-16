@@ -1,17 +1,18 @@
-<div class="audio-player">
-  <h2><%= song.title %>
-  <audio controls="controls">
-      <source src="<%= song.link %>" />
-    </audio>
-  </h2>
-</div>
-<% if current_user %>
-  <%= render partial: 'likes/like', locals: { song: song } %>
+<% if song.has_audio? %>
+  <div class="audio-player">
+    <h2>
+      <%= song.title %>
+      <audio controls="controls">
+        <source src="<%= song.link %>" />
+      </audio>
+    </h2>
+  </div>
+
+  <%#= link_to "Downlaod", download_url_for(song.link), :class => "html5" %>
+  <%#= link_to "Delete",  "songs/delete/?song=" + song.key, :confirm => 'Are you sure you want to delete ' + song.key + '?' %>
+  </p>
 <% end %>
 
-<%#= link_to "Downlaod", download_url_for(song.link), :class => "html5" %>
-<%#= link_to "Delete",  "songs/delete/?song=" + song.key, :confirm => 'Are you sure you want to delete ' + song.key + '?' %>
-</p>
 <script>
 $(document).ready(function() {
     $('#audio-player').mediaelementplayer({
